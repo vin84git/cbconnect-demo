@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+
+      $( document ).ready(function() {
+          showTweets();
+      });
+
+
+      setInterval(showTweets, 1000);
+
+      function showTweets(){
+          //alert('hi');
+          $.get( "msgs/msgs", function( data ) {
+
+              $("#msglist").html("");
+              var len = data.length;
+			  $.each( data, function( i, l ){
+                var t = new Date(l.t);
+			  	$("#msglist").prepend( " <a href='#' class='list-group-item'><h4 class='list-group-item-heading'>"+l.m+"</h4><p class='list-group-item-text'>"+t +"</p></a>" );
+				  
+				});
+
+
+                 $("#msglist").prepend( " <a href='#' class='list-group-item active'><h4 class='list-group-item-heading'>"+len+" Tweets</h4><p class='list-group-item-text'> received</p></a>" );
+			});
+      }
+
+  </script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Couchbase Connect Tweets from Kafka</h2>
+    <div id="msglist" class="list-group">
+
+    </div>
+</div>
+
+</body>
+</html>
