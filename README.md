@@ -21,7 +21,7 @@ Run application:
 npm start
 ```
 
-update config.js to use your kafka cluster
+update config.js to use your kafka host and port
 
 kafka: {
 		host:'localhost',
