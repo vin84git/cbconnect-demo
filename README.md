@@ -18,7 +18,7 @@ npm install
 Run application:
 
 ```
-npm start
+node app.js
 ```
 
 update config.js to use your kafka host and port
